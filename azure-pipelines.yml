@@ -56,7 +56,7 @@ steps:
     DEPLOY_NUMBER="$(Build.BuildNumber)"
     DEPLOY_URL="$(Build.BuildUri)"
     VERSION="${VERSION:-$(git rev-parse --short HEAD)}"  # Default to the current git commit hash
-    DESCRIPTION="${DESCRIPTION:-\"Deployed by CI Pipeline: Deploy #${DEPLOY_NUMBER}\"}"
+    DESCRIPTION="${DESCRIPTION:-"Deployed by CI Pipeline: Deploy #${DEPLOY_NUMBER}"}"
     COMMIT_SHA="${COMMIT_SHA:-$(git rev-parse HEAD)}"
     COMMIT_MESSAGE="${COMMIT_MESSAGE:-$(git log -1 --pretty=%B)}"
     COMMIT_BRANCH="${COMMIT_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}"
