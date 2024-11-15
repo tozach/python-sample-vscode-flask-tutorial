@@ -41,7 +41,9 @@ steps:
       echo "Environment variables OPSLEVEL_ROUTING_ID, SERVICE_ALIAS, and DEPLOYMENT_ENV must be set."
       exit 1
     fi
+    echo "$(Build.QueuedById)"
     echo "$(Build.RequestedForEmail)"
+    echo "$(Build.RequestedFor)"
     echo "$(Build.QueuedBy)"
     echo "$(Build.BuildNumber)"
     echo "$(Build.BuildUri)"
