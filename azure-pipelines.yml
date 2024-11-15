@@ -90,6 +90,8 @@ steps:
         \"authoring_date\": \"$AUTHORING_DATE\"
       }
     }"
+    
+    echo "$data"
 
     # Send data to OpsLevel
     response=$(curl -s -i -X POST "$OPSLEVEL_ENDPOINT" \
