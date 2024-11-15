@@ -50,20 +50,21 @@ steps:
 
     # Variables (modify or provide dynamically in Azure pipeline environment)
     DEPLOYER_ID="$(Build.QueuedById)"
+    DEPLOYER_ID="${DEPLOYER_ID:-$(Build.QueuedById)}"
     DEPLOYER_EMAIL="$(Build.RequestedForEmail)"
     DEPLOYER_NAME="$(Build.RequestedFor)"
     DEPLOY_NUMBER="$(Build.BuildNumber)"
     DEPLOY_URL="$(Build.BuildUri)"
-    VERSION="\${VERSION:-$(git rev-parse --short HEAD)}"  # Default to the current git commit hash
+    VERSION="${VERSION:-$(git rev-parse --short HEAD)}"  # Default to the current git commit hash
     DESCRIPTION="${DESCRIPTION:-\"Deployed by CI Pipeline: Deploy #${DEPLOY_NUMBER}\"}"
-    COMMIT_SHA="\${COMMIT_SHA:-$(git rev-parse HEAD)}"
+    COMMIT_SHA="${COMMIT_SHA:-$(git rev-parse HEAD)}"
     COMMIT_MESSAGE="${COMMIT_MESSAGE:-$(git log -1 --pretty=%B)}"
     COMMIT_BRANCH="${COMMIT_BRANCH:-$(git rev-parse --abbrev-ref HEAD)}"
     COMMIT_DATE="${COMMIT_DATE:-$(git show --no-patch --format='%cd')}"
     COMMITTER_NAME="${COMMITTER_NAME:-$(git show --no-patch --format='%cn')}"
-    COMMITTER_EMAIL="\${COMMITTER_EMAIL:-$(git show --no-patch --format='%ce')}"
-    AUTHOR_NAME="\${AUTHOR_NAME:-$(git show --no-patch --format='%an')}"
-    AUTHOR_EMAIL="\${AUTHOR_EMAIL:-$(git show --no-patch --format='%ae')}"
+    COMMITTER_EMAIL="${COMMITTER_EMAIL:-$(git show --no-patch --format='%ce')}"
+    AUTHOR_NAME="${AUTHOR_NAME:-$(git show --no-patch --format='%an')}"
+    AUTHOR_EMAIL="${AUTHOR_EMAIL:-$(git show --no-patch --format='%ae')}"
     AUTHORING_DATE="${AUTHORING_DATE:-$(git show --no-patch --format='%ad')}"
     DEPLOYED_AT="`date -u +%Y-%m-%dT%H:%M:%SZ`"
     
