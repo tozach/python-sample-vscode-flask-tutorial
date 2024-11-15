@@ -44,10 +44,10 @@ steps:
 
     # Variables (modify or provide dynamically in Azure pipeline environment)
     DEPLOYER_ID="${DEPLOYER_ID:-"1a9f841f-9a3d-4423-a05a-7e9c31a02b16"}"
-    DEPLOYER_EMAIL="${${Build.RequestedForEmail}:-"mscott@example.com"}"
-    DEPLOYER_NAME="${${Build.QueuedBy}:-"Michael Scott"}"
-    DEPLOY_NUMBER="${${Build.BuildNumber}:-"234"}"
-    DEPLOY_URL="${${Build.BuildUri}:-"https://heroku.deploys.com"}"
+    DEPLOYER_EMAIL="${DEPLOYER_EMAIL:-${Build.RequestedForEmail}}"
+    DEPLOYER_NAME="${DEPLOYER_NAME:-${Build.QueuedBy}}"
+    DEPLOY_NUMBER="${DEPLOY_NUMBER:-${Build.BuildNumber}}"
+    DEPLOY_URL="${DEPLOY_URL:-${Build.BuildUri}}"
     VERSION="${VERSION:-$(git rev-parse --short HEAD)}"  # Default to the current git commit hash
     DESCRIPTION="${DESCRIPTION:-"Deployed by CI Pipeline: Deploy #${DEPLOY_NUMBER}"}"
     COMMIT_SHA="${COMMIT_SHA:-$(git rev-parse HEAD)}"
